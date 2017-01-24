@@ -9,17 +9,22 @@
 <html>
 <head>
     <title>测试登录</title>
+    <link type="text/css" href="style/customer.css">
 </head>
 <body style="text-align: center">
 
 
-<span style="color: red"><%=
-    ((Map) request.getAttribute("errorMap")).get("loginResult")
+<span style="color: red"><%
+    if (request.getAttribute("errorMap") != null) {
+%>
+    <%=((Map) request.getAttribute("errorMap")).get("loginResult")%>
+    <%
+        }
+
     %></span>
 
 
-
-<form action="/srsw/login" method="post">
+<form action="/srsw/login" method="post" class="loginForm">
     <table>
         <thead>
         <th>
