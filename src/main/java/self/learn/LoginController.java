@@ -2,6 +2,8 @@ package self.learn;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import redis.clients.jedis.Jedis;
+import service.RedisServer;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -18,6 +20,8 @@ import java.util.Map;
 @WebServlet(urlPatterns = "/login")
 public class LoginController extends HttpServlet {
     private static Logger logger = LoggerFactory.getLogger(LoginController.class);
+
+    final Jedis jedis = RedisServer.getJedis();
 
 
     public Map<String,String> userLogin(String userName, String password) {
